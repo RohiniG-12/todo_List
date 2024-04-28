@@ -4,24 +4,53 @@
    
     <title>ToDo-List</title>
     <style>
+        body{
+            background-image: linear-gradient( 174.2deg,  rgba(255,244,228,1) 7.1%, rgba(240,246,238,1) 67.4% );
+            height: 100vh;
+           
+        }
        .action-container{
         display: flex;
         justify-content: center;
-        margin-top: ;
+        margin-top:20px ;
+        padding:5px 25px;
        }
+       .list-container{
+        background-color: #ccebff;
+        height: 400px;
+        width: 450px;
+        display: block;
+        margin: 50px auto;
+        padding: 10px;
+        border-radius: 10px;
+        overflow-y: scroll
+
+       }
+       .todo-Item{
+        background-color: #004d80;
+        padding: 5px 20px;
+        border-radius: 30px;
+        color:#fff ;
+        margin: 5px;
+       }
+       .btn{
+        padding:5px 10px;
+       }
+      
+
     </style>
 </head>
 <body>
     <div class="list-container" id="list-container">
 
-    </div>
+    </div>  
     <div class="action-container">
         <input type="text" id="input-todo"/>
 
-        <button onclick="add()">
+        <button class="btn" onclick="add()">
         Add</button>
 
-       
+    
     </div>
     
     <script>
@@ -40,12 +69,14 @@
         function renderToDoList()
         {
             const listContainer = document.getElementById('list-container')
-             listContainer.innerHTML=""
+             listContainer.innerHTML="";
 
              for(const todoItem of todoList)
              {
-                listContainer.innerHTML+= `<div class="todo-Item">${ todoItem}</div>`
-
+                listContainer.innerHTML+= `<div class="todo-Item">
+                <input type="checkbox"/>
+                ${ todoItem}</div>`;
+                 
              }
         }
 
