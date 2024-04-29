@@ -21,7 +21,7 @@
         
        }
        .list-container{
-        background-color: #e6ccb3;
+        background-color: #f4bdde;
         height: 400px;
         width: 450px;
         display: block;
@@ -32,7 +32,7 @@
 
        }
        .todo-Item{
-        background-color: #ac7339;
+        background-color: #821456;
         padding: 10px 20px;
         border-radius: 30px;
         color:#fff ;
@@ -41,12 +41,14 @@
        #input-todo{
         padding: 10px 25px;
         border-radius: 7px;
-        background-color: #e6ccb3;
+        background-color: #f4bdde;
+        margin-right: 10px;
        }
        .btn{
-        padding:10px 10px ;
-        background-color:#ac7339;
+        padding:10px 20px ;
+        background-color:#821456;
         border-radius: 7px;
+        margin-left: 10px;
        }
 
       
@@ -68,13 +70,20 @@
     </div>
     
     <script>
-        const todoList=[]
+        let todoList=[]
+      const  listfromlocalstorage= localStorage.getItem("todoList");
+      if(listfromlocalstorage)
+      {
+        todoList=JSON.parse(listfromlocalstorage);
+        renderToDoList()
+      }
 
         function add()
         {
             const inputElement = document.getElementById('input-todo')
+            todoList.push(inputElement.value);
             
-            todoList.push(inputElement.value)
+            localStorage.setItem("todoList",JSON.stringify(todoList));
             inputElement.value=""
            
             renderToDoList()
